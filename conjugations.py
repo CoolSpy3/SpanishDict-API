@@ -7,7 +7,7 @@ SUBJUNCTIVE = 'SUB'
 IMPERATIVE = 'IMP'
 CONTINUOUS = 'CONT'
 PERFECT = 'PERF'
-PERFECT_SUBJEUNCTIVE = 'PERF_SUBJ'
+PERFECT_SUBJUNCTIVE = 'PERF_SUBJ'
 
 PRESENT = 'PRES'
 PRETERIT = 'PRET'
@@ -19,13 +19,13 @@ FUTURE = 'FUT'
 AFFIRMATIVE = 'AFF'
 NEGATIVE = 'NEG'
 
-YO = '11'
-TU = '21'
-EL_ELLA_USTED = '31'
-NOSOTROS = '12'
-VOSOTROS = '22'
-ELLOS_ELLAS_UDS = '33'
-VOS = '212'
+YO = 'YO'
+TU = 'TU'
+EL_ELLA_USTED = 'EL'
+NOSOTROS = 'NOS'
+VOSOTROS = 'VOS'
+ELLOS_ELLAS_UDS = 'ELLOS'
+VOS = 'VOS(TU)'
 
 SUBJECTS = [YO, TU, EL_ELLA_USTED, NOSOTROS, VOSOTROS, ELLOS_ELLAS_UDS, VOS]
 
@@ -60,7 +60,7 @@ VALID_CONJUGATIONS = {
         CONDITIONAL,
         FUTURE
     ],
-    PERFECT_SUBJEUNCTIVE: [
+    PERFECT_SUBJUNCTIVE: [
         PRESENT,
         PAST,
         FUTURE
@@ -73,7 +73,7 @@ def get_json_path_for_conjugation(mode: str, tense: str) -> str:
     try:
         if tense not in VALID_CONJUGATIONS[mode]:
             return None
-        jsonMode = {INDICATIVE: 'Indicative', SUBJUNCTIVE: 'Subjunctive', CONTINUOUS: 'Continuous', PERFECT: 'Perfect', PERFECT_SUBJEUNCTIVE: 'PerfectSubjunctive'}[mode]
+        jsonMode = {INDICATIVE: 'Indicative', SUBJUNCTIVE: 'Subjunctive', CONTINUOUS: 'Continuous', PERFECT: 'Perfect', PERFECT_SUBJUNCTIVE: 'PerfectSubjunctive'}[mode]
         jsonTense = {PRESENT: 'present', PRETERIT: 'preterit', IMPERFECT: 'imperfect', PAST: 'past', CONDITIONAL: 'conditional', FUTURE: 'future'}[tense]
         return jsonTense + jsonMode
     except KeyError:
