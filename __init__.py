@@ -2,6 +2,7 @@ import spanishdictapi.conjugations
 from html.parser import HTMLParser
 import json
 import re
+import urllib.parse
 import urllib.request
 
 __cacheEnabled = True
@@ -20,7 +21,7 @@ class __JsonFinder(HTMLParser):
 def get_json_for_word(word: str) -> str:
     if __cacheEnabled and word in __cache:
         return __cache[word]
-    with urllib.request.urlopen(f'https://spanishdict.com/conjugate/{word}') as htmlfp:
+    with urllib.request.urlopen(f'https://spanishdict.com/conjugate/{urllib.parse.quote(word)}') as htmlfp:
         js = []
         __JsonFinder(js).feed(htmlfp.read().decode('utf-8'))
         if __cacheEnabled:
