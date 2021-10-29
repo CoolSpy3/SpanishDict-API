@@ -1,4 +1,4 @@
-import spanishdictapi.conjugations
+import .conjugations
 from html.parser import HTMLParser
 import json
 import re
